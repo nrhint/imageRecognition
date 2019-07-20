@@ -5,7 +5,7 @@
 
 from PIL import Image, ImageFilter
 
-filename = 'Images/4493294788823736143.jpg'
+filename = 'test.png'
 thresh = 500
 
 run = open('runNum', 'r').read()

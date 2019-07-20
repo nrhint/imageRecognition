@@ -1,7 +1,7 @@
 ##Nathan Hinton
 
 import numpy as np
-import argparse
+#import argparse
 import imutils
 import cv2
 from PIL import Image
@@ -11,7 +11,7 @@ from PIL import Image
 #ap.add_argument("-i", "--image", help = "path to the image file")
 #args = vars(ap.parse_args())
 
-filename = "./Images/CamilleFentonShankCroped.jpg"
+filename = "test3.png"
 image = Image.open(filename)
 
  
@@ -19,19 +19,24 @@ image = Image.open(filename)
 image = cv2.imread(filename)
 # load the image
 #image = cv2.imread(args["image"])
- 
-# find all the 'black' shapes in the image
-lower = np.array([20, 25, 30])
-upper = np.array([70, 80, 120])
-shapeMask = cv2.inRange(image, lower, upper)
+count = []
+up = 0
+while len(count) == 0:
+    up +=5
+    # find all the 'black' shapes in the image
+    lower = np.array([0, 0, 0])
+    upper = np.array([up, up, up])
+    shapeMask = cv2.inRange(image, lower, upper)
 
-# find the contours in the mask
-cnts = cv2.findContours(shapeMask.copy(), cv2.RETR_EXTERNAL,
-	cv2.CHAIN_APPROX_SIMPLE)
-cnts = imutils.grab_contours(cnts)
-print("I found {} black shapes".format(len(cnts)))
-cv2.imshow("Mask", shapeMask)
-cv2.imwrite("Mask", shapeMask)
+    # find the contours in the mask
+    cnts = cv2.findContours(shapeMask.copy(), cv2.RETR_EXTERNAL,
+            cv2.CHAIN_APPROX_SIMPLE)
+    count = imutils.grab_contours(cnts)
+    
+print(up)
+print("I found {} black shapes".format(len(count)))
+#cv2.imshow("Mask", shapeMask)
+cv2.imwrite("Mask.png", shapeMask)
  
 # loop over the contours
 ##for c in cnts:
