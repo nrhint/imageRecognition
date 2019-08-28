@@ -4,6 +4,7 @@ start = t()
 print("START")
 print()
 print()
+print("Importing modules...")
 import numpy as np
 import imutils
 import cv2
@@ -12,7 +13,7 @@ import numpy2stl
 
 ratio = 5
 
-filename = "./square.jpg"
+filename = "./square.png"
 print("Loading image %s"%filename)
 
 # load the image
