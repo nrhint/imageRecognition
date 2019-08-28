@@ -13,7 +13,7 @@ import numpy2stl
 
 ratio = 5
 
-filename = "./square.png"
+filename = "./test4.png"
 print("Loading image %s"%filename)
 
 # load the image
@@ -80,8 +80,9 @@ while loop == True:
 #cv2.imshow('SM', shapeMask)
 
 print("I found {} black shapes".format(len(count)))
+cv2.imwrite(shapeMask)
 print("Creating STL file")
-numpy2stl.numpy2stl(shapeMask, "%s.stl"%filename, scale=0.05, mask_val=5., solid=False)
+numpy2stl.numpy2stl(shapeMask, "%s.generated.stl"%filename, scale=0.05, mask_val=5., solid=False)
 print("Finished with %s"%filename)
 print()
 print()
