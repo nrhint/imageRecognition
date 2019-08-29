@@ -1,3 +1,4 @@
+#1.787e27 @ 7983
 ##Nathan Hinton
 from time import time as t
 start = t()
@@ -54,11 +55,13 @@ loop = True
 ##print(image.shape)
 
 print('Try changing the contrast...:')
-scale_value=100
-image = Image.
-image = ImageEnhance.Contrast(image).enhance(scale_value)
-cv2.imwrite('%s.generated.image.png'%filename, image)
-image.show()
+scale_value=1
+pilImage = Image.open(filename)
+pilImage.show()
+pilImage = ImageEnhance.Contrast(pilImage).enhance(scale_value)
+pilImage.show()
+pilImage.save('%s.contrasted.png'%filename)
+pilImage.save()
 
 count = []
 print("Finding the shank...")
