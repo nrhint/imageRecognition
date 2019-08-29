@@ -8,7 +8,7 @@ print("Importing modules...")
 import numpy as np
 import imutils
 import cv2
-from PIL import Image
+from PIL import Image, ImageEnhance
 import numpy2stl
 
 ratio = 5
@@ -53,6 +53,13 @@ loop = True
 ##print("||")
 ##print(image.shape)
 
+print('Try changing the contrast...:')
+scale_value=100
+image = Image.
+image = ImageEnhance.Contrast(image).enhance(scale_value)
+cv2.imwrite('%s.generated.image.png'%filename, image)
+image.show()
+
 count = []
 print("Finding the shank...")
 while loop == True:
@@ -80,12 +87,12 @@ while loop == True:
 #cv2.imshow('SM', shapeMask)
 
 print("I found {} black shapes".format(len(count)))
-cv2.imwrite(shapeMask)
-print("Creating STL file")
-numpy2stl.numpy2stl(shapeMask, "%s.generated.stl"%filename, scale=0.05, mask_val=5., solid=False)
-print("Finished with %s"%filename)
-print()
-print()
+cv2.imwrite('%s.generated.shapemask.png'%filename, shapeMask)
+##print("Creating STL file")
+##numpy2stl.numpy2stl(shapeMask, "%s.generated.stl"%filename, scale=0.05, mask_val=5., solid=False)
+##print("Finished with %s"%filename)
+##print()
+##print()
 print("END")
 end = t()
 print("Program took %s sconds to excecute"%(end-start))
